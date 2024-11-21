@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>View List: {{ list.name }}</h2>
+<ul>
+    {% for code in list.response_codes | safe | json.loads %}
+        <li>{{ code }} - <img src="https://http.dog/{{ code }}.jpg" alt="Dog for {{ code }}" width="150"></li>
+    {% endfor %}
+</ul>
+<a href="/lists">Back to My Lists</a>
+{% endblock %}

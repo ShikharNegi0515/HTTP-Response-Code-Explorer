@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Edit List: {{ list.name }}</h2>
+<form method="POST">
+    <label>List Name:</label>
+    <input type="text" name="name" value="{{ list.name }}" required>
+    <label>Response Codes (Comma-separated):</label>
+    <textarea name="response_codes" required>{{ list.response_codes | safe | json.loads | join(', ') }}</textarea>
+    <button type="submit">Save Changes</button>
+</form>
+<a href="/lists">Back to My Lists</a>
+{% endblock %}
